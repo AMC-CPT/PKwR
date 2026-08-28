@@ -15,6 +15,7 @@
 | `figures/` | 각 스니펫이 만든 그림 79개 |
 | `R/build.R` | 전부 다시 만드는 스크립트. 장별 세션 경계가 주석에 적혀 있습니다 |
 | `R/_freeze.R` | 스니펫 하나를 실행해 출력과 그림을 고정하는 도구 |
+| `TDM-Vanco/` | 12.7절의 vancomycin TDM Shiny 앱 (아래 참조) |
 
 ## 실행
 
@@ -64,6 +65,57 @@ install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI",
 **출력과 그림을 저장소에 넣은 이유.** 보통은 생성물을 기록하지 않고 그것을 만든 코드만
 기록합니다. 여기서는 R 을 설치하지 않고 코드만 읽는 사람도 결과를 볼 수 있도록 예외를
 두었습니다. 대신 그 파일들을 언제든 다시 만들 수 있는 코드가 같은 저장소에 있습니다.
+
+## TDM-Vanco: vancomycin TDM 웹앱
+
+`TDM-Vanco/` 는 책 12.7절이 설명하는 TDM 엔진을 실제로 돌려 보는 Shiny 앱입니다. 집단 모형의
+출력(THETA, OMEGA, SIGMA)만 바꾸면 다른 약물로 갈아 끼울 수 있다는 것이 이 앱의 요점입니다.
+
+외부 의존은 **`shiny` 하나**입니다(`commonmark` 는 도움말 탭의 마크다운 렌더링에만 쓰이고,
+없으면 평문으로 보여 줍니다). 그 밖에는 base R 만 씁니다.
+
+### 실행하는 세 가지 방법
+
+**1. 내려받지 않고 바로 (R 이 있는 경우)**
+
+```r
+shiny::runGitHub("PKwR", "AMC-CPT", subdir = "TDM-Vanco")
+```
+
+한 줄이면 됩니다. GitHub 에서 받아 임시 폴더에 풀고 바로 띄웁니다.
+
+**2. 내려받아서**
+
+```r
+shiny::runApp("TDM-Vanco")     # 저장소 최상위에서
+```
+
+**3. 브라우저에서만 (R 없이)**
+
+GitHub 자체는 R 을 돌리지 못하고 GitHub Pages 는 정적 파일만 줍니다. 그러나
+[shinylive](https://posit-dev.github.io/r-shinylive/) 로 앱을 WebAssembly 로 내보내면 서버
+없이 브라우저 안에서 실행되고, 그 결과물을 GitHub Pages 에 올릴 수 있습니다. 이 앱이 쓰는
+`shiny` 와 `commonmark` 는 둘 다 webR 저장소에 있으므로 그대로 동작합니다.
+
+```r
+install.packages("shinylive")
+shinylive::export("TDM-Vanco", "docs")   # docs/ 에 정적 사이트 생성
+```
+
+`docs/` 를 커밋하고 저장소 설정에서 Pages 의 소스를 `main` 브랜치의 `/docs` 로 지정하면
+`https://amc-cpt.github.io/PKwR/` 에서 앱이 열립니다. 첫 접속에서 R 런타임(수십 MB)을 내려받고
+그 뒤로는 캐시됩니다.
+
+서버가 필요하면 shinyapps.io 나 Posit Connect Cloud 에 이 저장소를 연결하는 방법도 있습니다.
+
+### 검증
+
+`tests/regression.R` 은 `tests/fixtures/` 의 **합성 자료**로 회귀 검사를 돌려
+`golden_baseline.rds` 와 대조합니다. 실제 환자 자료는 이 저장소에 없습니다.
+
+```r
+source("TDM-Vanco/tests/regression.R")
+```
 
 ## 책
 
