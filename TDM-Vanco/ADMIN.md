@@ -31,12 +31,12 @@
 
 **권장 — 폴더로 실행** (Shiny가 작업 디렉터리를 앱 폴더로 잡아 엔진/모델 파일을 항상 찾음):
 ```r
-shiny::runApp("C:/R/TDM-Vanco", port = 4972, host = "127.0.0.1")
+shiny::runApp("TDM-Vanco", port = 4972, host = "127.0.0.1")
 ```
 [RunMe.R](RunMe.R) 을 소스해도 동일. 개별 진입 파일도 직접 실행 가능:
 ```r
-shiny::runApp("C:/R/TDM-Vanco/Start4.R")  # AMC + Inje (모델 선택)
-shiny::runApp("C:/R/TDM-Vanco/Start3.R")  # Inje 단일
+shiny::runApp("TDM-Vanco/Start4.R")  # AMC + Inje (모델 선택)
+shiny::runApp("TDM-Vanco/Start3.R")  # Inje 단일
 ```
 `app.R` = `Start4.R` 와 동일한 표준 진입점.
 
@@ -97,12 +97,12 @@ Rscript tests/regression.R make    # 의도된 변경 후 기준선 재생성
 - `synthetic_predose_amc.csv` 는 AMC 사전투여-0 케이스를 포함해 해당 수정이 유지됨을 잠근다.
 - **PASS 조건**: `max|delta| = 0` (비트 단위 동일).
 
-**전수(실데이터) 회귀** — 참조 코호트가 있을 때 권장. 예: `C:/G/TDM/BAIK1`, `BAIK2` 의 환자별 CSV.
+**전수(실데이터) 회귀** — 참조 코호트를 가지고 있다면 권장한다. 환자별 CSV 를 모아 둔 로컬 폴더를 쓴다(저장소에는 두지 않는다).
 1. 수정 전 엔진(`git show HEAD:TDMLIB3.R`)과 수정 후 엔진으로 각각 모든 파일 × 모든 모델을 돌려 결과를 저장.
 2. 두 결과를 대조: 기존에 fit되던 모든 환자는 **비트 동일**, 상태 변화(정상↔오류)만 의도된 것인지 확인.
-3. 추가로 `EBE_batch_BAIK1_BAIK2.csv` 의 참조 Inje EBE와 대조하면 엔진이 NONMEM 결과를 재현하는지 확인 가능.
+3. NONMEM 으로 얻은 참조 EBE 가 있으면 함께 대조해 엔진이 그 결과를 재현하는지 확인한다.
 
-> 참고: 최근 개선에서 위 절차로 356명(BAIK1+BAIK2) × 2모델 전수 대조를 수행했고, 안전 수정, AMC 사전투여-0 수정, 날짜/성별 검증, 엔진 클로저화가 모두 **기존 fit 환자에 대해 비트 단위 동일**, Inje EBE가 NONMEM 배치 참조와 356명 전원 일치(반올림 오차 5e-6)함을 확인함.
+> 참고: 개발 과정에서 위 절차로 참조 코호트 전수 대조를 수행했고, 안전 수정, AMC 사전투여-0 수정, 날짜/성별 검증, 엔진 클로저화가 모두 **기존 fit 환자에 대해 비트 단위 동일**, EBE 가 NONMEM 배치 참조와 전원 일치(반올림 오차 5e-6)함을 확인했다.
 
 **실제 환자 데이터는 리포에 커밋하지 말 것** (프라이버시). 전수 회귀는 로컬에서만.
 
@@ -112,7 +112,7 @@ Rscript tests/regression.R make    # 의도된 변경 후 기준선 재생성
 
 | 증상 | 원인 / 조치 |
 |------|-------------|
-| 실행 시 *Cannot locate TDMLIB3.R / models.R / tdmApp.R* | 앱 폴더가 아닌 곳에서 개별 파일 실행. `runApp("C:/R/TDM-Vanco")` 로 폴더 실행하거나 해당 폴더에서 실행. |
+| 실행 시 *Cannot locate TDMLIB3.R / models.R / tdmApp.R* | 앱 폴더가 아닌 곳에서 개별 파일 실행. `runApp("TDM-Vanco")` 로 폴더 실행하거나 해당 폴더에서 실행. |
 | 포트 사용 중 | `RunMe.R`/`runApp` 의 `port` 변경. 한 번에 하나의 앱만(runApp은 블로킹). |
 | 도움말 탭이 원문 텍스트로 보임 | `commonmark` 미설치. `install.packages("commonmark")`. |
 | 업로드 오류 메시지(용량-속도 불일치, 다중 ID, CLCR 없음 등) | 입력 형식 문제. [help_user.md](help_user.md) §6 참고. 엔진이 잘못된 데이터를 조용히 처리하지 않고 **명확히 거부**하도록 설계됨. |

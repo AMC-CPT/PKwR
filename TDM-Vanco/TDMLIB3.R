@@ -409,7 +409,7 @@ EBE = function(PRED, DATAi, TH, OM, SG)
   # near the origin (BFGS from 0 stalls) or bi-modal (V2/ETA3), so we search from
   # the origin plus +/-1.5 prior-SD along each ETA axis, Nelder-Mead then BFGS at
   # each, and keep the global best.  Verified to reproduce the reference NONMEM
-  # EBEs (EBEALL-from BAIK1-FINAL2b) for all 56 BAIK1 patients.
+  # EBEs for every patient of the reference cohort.
   priorSD = sqrt(diag(OM))
   starts  = list(rep(0, nEta))
   for (k in 1:nEta) for (sg in c(-1.5, 1.5)) {

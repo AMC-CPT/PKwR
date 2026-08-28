@@ -15,7 +15,7 @@ mode <- {a <- commandArgs(trailingOnly = TRUE); if (length(a)) a[1] else "check"
 
 # -- locate repo root (this file lives in <root>/tests) ---------------------
 root <- local({
-  cands <- c(".", "..", "C:/R/TDM-Vanco")
+  cands <- c(".", "..")
   hit <- cands[file.exists(file.path(cands, "TDMLIB3.R")) &
                file.exists(file.path(cands, "models.R"))]
   if (!length(hit)) stop("Cannot find TDMLIB3.R + models.R from ", getwd())

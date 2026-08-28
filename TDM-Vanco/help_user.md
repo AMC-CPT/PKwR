@@ -8,7 +8,7 @@
 
 ## 1. 시작하기 (3단계)
 
-1. **Population model** 선택 — `AMC`(3-ETA, 비례오차) 또는 `Inje`(4-ETA, BAIK1/FINAL2b). 모델이 하나뿐인 화면에서는 선택 항목이 표시되지 않습니다.
+1. **Population model** 선택 — `AMC`(3-ETA, 비례오차) 또는 `Inje`(4-ETA). 모델이 하나뿐인 화면에서는 선택 항목이 표시되지 않습니다.
 2. **Upload CSV** — NONMEM 형식의 환자 파일(한 명)을 올립니다.
 3. 자동으로 개인 파라미터가 추정되고 **AUC 기반 권고 용량**과 그래프가 나타납니다. 필요하면 좌측의 *Proposed next regimen* 값을 바꾸고 **Draw Graph**를 눌러 다시 그립니다.
 

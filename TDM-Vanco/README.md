@@ -4,17 +4,25 @@
 업로드하면 개인 PK 파라미터를 empirical-Bayes(MAP)로 추정하고, 목표 일일 AUC(기본 410 mg·h/L)에
 맞춘 1회 용량과 정상상태 Cmin/Cmax, 예측구간 그래프를 제시한다.
 
+![앱 화면](screenshot.png)
+
+*화면은 `tests/fixtures/synthetic_patient.csv`(합성 자료)를 넣은 것이다. 실제 환자 자료는 이
+저장소에 없다.*
+
+설치 없이 브라우저에서 바로 보려면 <https://amc-cpt.github.io/PKwR/> 를 열면 된다
+(shinylive/WebAssembly 판이라 업로드한 파일이 브라우저 밖으로 나가지 않는다).
+
 ## 파일 구조
 
 | 파일 | 역할 |
 |------|------|
-| `TDMLIB3.R` | **검증된 수치 엔진** — 전방모델(`PredVanco`), MAP 추정(`EBE`), 예측구간(`calcPI`), AUC 용량(`aucDose`/`ssMetrics`), CSV 수집(`prepTDM`). 원 논문(BAIK1/FINAL2b, 56명) NONMEM EBE를 재현. |
+| `TDMLIB3.R` | **검증된 수치 엔진** — 전방모델(`PredVanco`), MAP 추정(`EBE`), 예측구간(`calcPI`), AUC 용량(`aucDose`/`ssMetrics`), CSV 수집(`prepTDM`). 원 논문(Inje 모형, 56명) NONMEM EBE를 재현. |
 | `models.R` | 모집단 모델 **단일 출처** — `PARSETS`(AMC 3-ETA / Inje 4-ETA), `AUC_TARGET`, `TINF`. (이전엔 OMEGA 행렬이 Start3·Start4에 각각 손으로 복사돼 있었음 → 오타 위험 제거.) |
 | `tdmApp.R` | **앱 본체(팩토리)** — `tdmApp(models, selected, title, auc_target, tinf, help_md)` 하나로 UI+서버를 생성. 모델이 1개면 선택 라디오를 숨김. **도움말 탭** 포함. |
-| `app.R` | 표준 진입점. `shiny::runApp("C:/R/TDM-Vanco")` 로 실행(권장). AMC+Inje 선택형. |
+| `app.R` | 표준 진입점. `shiny::runApp("TDM-Vanco")` 로 실행(권장). AMC+Inje 선택형. |
 | `Start4.R` | 얇은 wrapper — AMC+Inje 선택형(구 Start4 동작). |
 | `Start3.R` | 얇은 wrapper — Inje 단일 모델(구 Start3 동작, 라디오 없음). |
-| `RunMe.R` | 런처. `runApp` 을 **앱 폴더**로 지정(구버전은 존재하지 않는 `C:/G/TDM` 경로였음). |
+| `RunMe.R` | 런처. `runApp` 을 **앱 폴더**로 지정. |
 | `help_user.md` | **사용자 안내** — 앱의 도움말 탭에 렌더(commonmark). |
 | `ADMIN.md` | **관리자 매뉴얼** — 설치·실행·모델 추가·회귀·문제해결. |
 | `tests/` | 합성 데이터 기반 회귀 테스트(아래). |
@@ -23,7 +31,7 @@
 
 ```r
 # 권장: 폴더를 지정하면 Shiny가 작업 디렉터리를 여기로 잡아 엔진/모델 파일을 항상 찾는다
-shiny::runApp("C:/R/TDM-Vanco", port = 4972, host = "127.0.0.1")
+shiny::runApp("TDM-Vanco", port = 4972, host = "127.0.0.1")
 ```
 
 `RunMe.R` 을 소스하면 위와 동일하게 실행된다. 개별 wrapper(`Start3.R`/`Start4.R`)도 그대로 실행 가능.
@@ -59,7 +67,7 @@ shiny::runApp("C:/R/TDM-Vanco", port = 4972, host = "127.0.0.1")
 - **수정**: `ObjEta` 와 정보행렬에서 **잔차분산이 0(비양)인 관측을 제외**. 그런 점은 예측이 ETA에
   무관(0)해 정보량이 0이므로, 제외해도 추정값이 바뀌지 않으면서 목적함수가 유한해진다.
 - **전수 회귀 증거**:
-  - BAIK1+BAIK2 **356명 × 2모델(712 fits) 전부 비트 단위 동일**(max|delta|=0) — 기존 유효 입력 무변화.
+  - 참조 코호트 **전수 × 2모델 전부 비트 단위 동일**(max|delta|=0) — 기존 유효 입력 무변화.
   - 별도로 구성한 사전투여-0 케이스: 원본=크래시 → 수정=정상 fit이며, "사전투여 점 포함" fit == "제외" fit(delta=0)로 무정보 점을 올바르게 제외함을 확인.
   - Inje EBE가 NONMEM 배치 참조와 356명 전원 일치(반올림 오차 5e-6).
   - `tests/fixtures/synthetic_predose_amc.csv` 로 이 수정을 회귀에 고정.
@@ -89,7 +97,7 @@ Rscript tests/regression.R check   # 현재 출력과 비교, 차이가 있으�
 | 성별 코딩 | **명시** | ✅ `SEX` 0=여성/1=남성 명시·검증 + 도움말 명시 |
 | 엔진 scratch env `e` 클로저화 | **적용** | ✅ `EBE`가 목적함수를 지역 클로저로 생성(전역 가변 env 제거, 재진입 안전). 356×2 비트 동일 |
 
-> 위 변경은 모두 참조 코호트(BAIK1+BAIK2 356 파일 × 2모델)에서 **비트 단위 동일**함을 재확인함
+> 위 변경은 모두 참조 코호트 전수 × 2모델에서 **비트 단위 동일**함을 재확인함
 > (날짜·성별 검증은 깨지던/모호하던 입력만 거부하며, 유효 입력의 숫자는 불변).
 
 **남은 선택 항목**: 겹치는 주입의 정확한 엔진 모델링(현재는 금지로 충분). 변경한다면

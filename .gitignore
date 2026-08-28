@@ -2,3 +2,6 @@
 .RData
 .Rproj.user/
 *.Rproj
+
+# shinylive 내보내기 결과. gh-pages 브랜치에 두므로 main 에는 넣지 않는다.
+/docs/

@@ -21,7 +21,7 @@ PARSETS = list(
     OM = diag(c(0.149, 0.12, 0, 0.416)),
     SG = matrix(c(0.231^2, 0, 0, 0), nrow = 2)),
 
-  # Inje - 4 ETAs (full OMEGA block), combined error  [BAIK1/FINAL2b]
+  # Inje - 4 ETAs (full OMEGA block), combined error
   Inje = list(
     TH = c(3.8135955291021233, 39.889510090195238, 44.981835351176571, 2.0055189192561507),
     OM = matrix(c( 0.10855133849022583,     -1.52445093837639736E-002, -0.19698189309256298,       0.11914555131547180,

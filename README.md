@@ -74,6 +74,11 @@ install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI",
 외부 의존은 **`shiny` 하나**입니다(`commonmark` 는 도움말 탭의 마크다운 렌더링에만 쓰이고,
 없으면 평문으로 보여 줍니다). 그 밖에는 base R 만 씁니다.
 
+![TDM-Vanco 화면](TDM-Vanco/screenshot.png)
+
+*합성 자료(`TDM-Vanco/tests/fixtures/synthetic_patient.csv`)를 넣은 화면입니다. 관측 농도 두 점으로
+개인 파라미터를 MAP 추정하고, 예측구간과 함께 다음 용량을 제시합니다.*
+
 ### 실행하는 세 가지 방법
 
 **1. 내려받지 않고 바로 (R 이 있는 경우)**
@@ -92,19 +97,25 @@ shiny::runApp("TDM-Vanco")     # 저장소 최상위에서
 
 **3. 브라우저에서만 (R 없이)**
 
+<https://amc-cpt.github.io/PKwR/> 를 엽니다. 설치도 서버도 필요 없습니다.
+
 GitHub 자체는 R 을 돌리지 못하고 GitHub Pages 는 정적 파일만 줍니다. 그러나
-[shinylive](https://posit-dev.github.io/r-shinylive/) 로 앱을 WebAssembly 로 내보내면 서버
-없이 브라우저 안에서 실행되고, 그 결과물을 GitHub Pages 에 올릴 수 있습니다. 이 앱이 쓰는
-`shiny` 와 `commonmark` 는 둘 다 webR 저장소에 있으므로 그대로 동작합니다.
+[shinylive](https://posit-dev.github.io/r-shinylive/) 로 앱을 WebAssembly 로 내보내면 R 런타임이
+브라우저 안에서 돌아가므로 정적 호스팅으로 충분합니다. 이 앱이 쓰는 `shiny` 와 `commonmark` 는
+둘 다 webR 저장소에 있어 그대로 동작합니다.
 
 ```r
 install.packages("shinylive")
 shinylive::export("TDM-Vanco", "docs")   # docs/ 에 정적 사이트 생성
 ```
 
-`docs/` 를 커밋하고 저장소 설정에서 Pages 의 소스를 `main` 브랜치의 `/docs` 로 지정하면
-`https://amc-cpt.github.io/PKwR/` 에서 앱이 열립니다. 첫 접속에서 R 런타임(수십 MB)을 내려받고
-그 뒤로는 캐시됩니다.
+내보낸 사이트는 66 MB 이고 대부분이 R 런타임입니다. 이것을 `main` 에 두면 위 1번의
+`runGitHub()` 가 내려받는 기본 브랜치 tarball 이 그만큼 커지므로, 이 저장소에서는 **`gh-pages`
+브랜치**에 따로 두었습니다(Pages 소스: `gh-pages` / `(root)`). 첫 접속에서 런타임을 내려받고
+그 뒤로는 브라우저에 캐시됩니다.
+
+두 가지가 다릅니다. 브라우저판은 R 이 사용자의 브라우저 안에서 도므로 **업로드한 환자 자료가
+어디로도 전송되지 않습니다.** 대신 첫 로딩이 느립니다.
 
 서버가 필요하면 shinyapps.io 나 Posit Connect Cloud 에 이 저장소를 연결하는 방법도 있습니다.
 
