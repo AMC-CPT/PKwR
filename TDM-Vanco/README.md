@@ -16,15 +16,15 @@
 
 | 파일 | 역할 |
 |------|------|
-| `TDMLIB3.R` | **검증된 수치 엔진** — 전방모델(`PredVanco`), MAP 추정(`EBE`), 예측구간(`calcPI`), AUC 용량(`aucDose`/`ssMetrics`), CSV 수집(`prepTDM`). 원 논문(Inje 모형, 56명) NONMEM EBE를 재현. |
-| `models.R` | 모집단 모델 **단일 출처** — `PARSETS`(AMC 3-ETA / Inje 4-ETA), `AUC_TARGET`, `TINF`. (이전엔 OMEGA 행렬이 Start3·Start4에 각각 손으로 복사돼 있었음 → 오타 위험 제거.) |
-| `tdmApp.R` | **앱 본체(팩토리)** — `tdmApp(models, selected, title, auc_target, tinf, help_md)` 하나로 UI+서버를 생성. 모델이 1개면 선택 라디오를 숨김. **도움말 탭** 포함. |
+| `TDMLIB3.R` | **검증된 수치 엔진**: 전방모델(`PredVanco`), MAP 추정(`EBE`), 예측구간(`calcPI`), AUC 용량(`aucDose`/`ssMetrics`), CSV 수집(`prepTDM`). 원 논문(Inje 모형, 56명) NONMEM EBE를 재현. |
+| `models.R` | 모집단 모델 **단일 출처**: `PARSETS`(AMC 3-ETA / Inje 4-ETA), `AUC_TARGET`, `TINF`. (이전엔 OMEGA 행렬이 Start3·Start4에 각각 손으로 복사돼 있었음 → 오타 위험 제거.) |
+| `tdmApp.R` | **앱 본체(팩토리)**: `tdmApp(models, selected, title, auc_target, tinf, help_md)` 하나로 UI+서버를 생성. 모델이 1개면 선택 라디오를 숨김. **도움말 탭** 포함. |
 | `app.R` | 표준 진입점. `shiny::runApp("TDM-Vanco")` 로 실행(권장). AMC+Inje 선택형. |
-| `Start4.R` | 얇은 wrapper — AMC+Inje 선택형(구 Start4 동작). |
-| `Start3.R` | 얇은 wrapper — Inje 단일 모델(구 Start3 동작, 라디오 없음). |
+| `Start4.R` | 얇은 wrapper: AMC+Inje 선택형(구 Start4 동작). |
+| `Start3.R` | 얇은 wrapper: Inje 단일 모델(구 Start3 동작, 라디오 없음). |
 | `RunMe.R` | 런처. `runApp` 을 **앱 폴더**로 지정. |
-| `help_user.md` | **사용자 안내** — 앱의 도움말 탭에 렌더(commonmark). |
-| `ADMIN.md` | **관리자 매뉴얼** — 설치·실행·모델 추가·회귀·문제해결. |
+| `help_user.md` | **사용자 안내**: 앱의 도움말 탭에 렌더(commonmark). |
+| `ADMIN.md` | **관리자 매뉴얼**: 설치·실행·모델 추가·회귀·문제해결. |
 | `tests/` | 합성 데이터 기반 회귀 테스트(아래). |
 
 ## 실행
@@ -67,7 +67,7 @@ shiny::runApp("TDM-Vanco", port = 4972, host = "127.0.0.1")
 - **수정**: `ObjEta` 와 정보행렬에서 **잔차분산이 0(비양)인 관측을 제외**. 그런 점은 예측이 ETA에
   무관(0)해 정보량이 0이므로, 제외해도 추정값이 바뀌지 않으면서 목적함수가 유한해진다.
 - **전수 회귀 증거**:
-  - 참조 코호트 **전수 × 2모델 전부 비트 단위 동일**(max|delta|=0) — 기존 유효 입력 무변화.
+  - 참조 코호트 **전수 × 2모델 전부 비트 단위 동일**(max|delta|=0). 기존 유효 입력은 변하지 않았다.
   - 별도로 구성한 사전투여-0 케이스: 원본=크래시 → 수정=정상 fit이며, "사전투여 점 포함" fit == "제외" fit(delta=0)로 무정보 점을 올바르게 제외함을 확인.
   - Inje EBE가 NONMEM 배치 참조와 356명 전원 일치(반올림 오차 5e-6).
   - `tests/fixtures/synthetic_predose_amc.csv` 로 이 수정을 회귀에 고정.
