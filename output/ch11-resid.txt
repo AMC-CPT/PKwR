@@ -1,0 +1,2 @@
+ SD.CWRES shapiro.p 
+    0.986     0.000 

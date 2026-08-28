@@ -1,0 +1,17 @@
+         Df Sum Sq Mean Sq F value  Pr(>F)    
+GRP       1   0.10  0.1002    3.13   0.091 .  
+GRP:SUBJ 22   5.14  0.2336    7.29 8.7e-06 ***
+PRD       1   0.02  0.0207    0.65   0.430    
+TRT       1   0.06  0.0631    1.97   0.174    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Error: 1*GRP:SUBJ + 0*MSE
+      Df Sum Sq Mean Sq F value Pr(>F)
+GRP    1   0.10   0.100    0.43   0.52
+Error 22   5.14   0.234               
+     PE      LL      UL CVw.pct 
+  0.930   0.851   1.016  18.050 
+  BE 
+TRUE 
+    PE     LL     UL 
+1.0627 0.9464 1.1933 

@@ -1,0 +1,10 @@
+  SUBJ GRP PRD TRT AUClast  Cmax
+1    1  RT   1   R  1879.8 419.3
+2    1  RT   2   T  1898.9 465.0
+3    2  RT   1   R   993.2 411.4
+4    2  RT   2   T  1285.3 337.4
+  AUClast  Cmax
+R    1958 477.3
+T    1821 507.2
+AUClast    Cmax 
+  0.930   1.063 

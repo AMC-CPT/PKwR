@@ -1,0 +1,8 @@
+           Cmax.formula Cmax.engine Cmin.formula Cmin.engine
+vancomycin        29.98       29.89       11.449      11.357
+gentamicin        20.09       20.09        0.281       0.281
+amikacin          59.89       59.89        1.589       1.589
+           Cmax.engine Cmin.engine
+vancomycin       29.98      11.449
+gentamicin       20.09       0.281
+amikacin         59.89       1.589

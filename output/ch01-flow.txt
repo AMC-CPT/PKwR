@@ -1,0 +1,6 @@
+[1]   0.00   0.00 100.00  77.88  47.24
+bisection     exact 
+    2.773     2.773 
+[1] "OK"
+Error in chk(data.frame(ID = c(2, 1), TIME = c(0, 0))) : 
+  !is.unsorted(d$ID) is not TRUE

@@ -1,0 +1,11 @@
+        num       mixed         lgl 
+  "numeric" "character"   "numeric" 
+[1] 1.5  NA
+           [,1]  [,2]  [,3]  [,4]
+is.na      TRUE FALSE  TRUE FALSE
+is.nan     TRUE FALSE FALSE FALSE
+is.finite FALSE FALSE FALSE  TRUE
+      log.of.0 zero.times.Inf 
+          -Inf            NaN 
+as.number as.factor 
+        4         3 

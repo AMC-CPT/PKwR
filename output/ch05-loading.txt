@@ -1,0 +1,2 @@
+  CL.L.per.hr         LD.mg MD.mg.per.day 
+       8.6643        0.7500        0.3119 

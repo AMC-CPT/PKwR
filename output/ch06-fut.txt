@@ -1,0 +1,3 @@
+             fu CL Css.total Css.free   Vd
+normal      0.1  3     3.333    0.333 10.8
+low.albumin 0.2  6     1.667    0.333 18.6

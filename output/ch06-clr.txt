@@ -1,0 +1,6 @@
+               fu CLr  fuGFR ratio          net
+inulin       1.00 125 125.00  1.00   filtration
+PAH          0.90 600 112.50  5.33    secretion
+glucose      1.00   0 125.00  0.00 reabsorption
+digoxin      0.75 110  93.75  1.17   filtration
+penicillin G 0.45 500  56.25  8.89    secretion

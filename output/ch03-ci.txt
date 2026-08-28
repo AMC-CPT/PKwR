@@ -1,0 +1,2 @@
+  coverage mean.width 
+    0.9485     0.3710 

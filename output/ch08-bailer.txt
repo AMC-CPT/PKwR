@@ -1,0 +1,10 @@
+   w1    w2    w3    w4    w5    w6 
+ 0.25  0.75  1.50  3.00 10.00  8.00 
+AUC.trap    AUC.w       SE 
+  38.926   38.926    2.109 
+  SE.bailer     SE.boot SE.boot.adj 
+      2.109       1.790       2.067 
+    lo.normal     hi.normal  lo.boot.2.5% hi.boot.97.5% 
+        34.79         43.06         35.74         42.70 
+ AUC.low AUC.high    ratio  diff.dn    se.dn        z        p 
+ 38.9258  84.5320   2.1716   3.3402   3.6199   0.9227   0.3561 

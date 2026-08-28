@@ -1,0 +1,5 @@
+                              value fcalls
+Nelder.Mead 1.0000 1.0010 8.825e-08    195
+BFGS        0.9998 0.9996 3.827e-08    118
+        x         y     value    fcalls    gcalls 
+1.000e+00 1.000e+00 9.595e-18 1.100e+02 4.300e+01 

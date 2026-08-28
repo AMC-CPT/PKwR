@@ -1,0 +1,2 @@
+ dOFV.obs    p.perm dOFV.crit 
+    3.280     0.235     5.790 

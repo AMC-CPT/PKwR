@@ -1,0 +1,7 @@
+     Bmax    Kd      NS PropErrVar PropErrSD
+PE  2.301 7.343  0.0044     0.0018    0.0422
+RSE 4.298 6.090 16.4733    44.8013   22.4006
+  Kd.scatchard Bmax.scatchard         Kd.nls       Bmax.nls 
+         7.418          2.312          7.343          2.302 
+ IC50    Ki 
+30.00 18.46 

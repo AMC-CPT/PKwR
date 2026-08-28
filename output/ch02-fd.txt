@@ -1,0 +1,4 @@
+   best.h.fwd      sqrt.eps    best.h.ctr cube.root.eps   min.err.fwd 
+     1.78e-08      1.49e-08      1.00e-05      6.06e-06      2.89e-08 
+  min.err.ctr 
+     5.41e-12 

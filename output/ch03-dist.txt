@@ -1,0 +1,2 @@
+  geo.mean arith.mean     median         CV 
+  100.0000   104.6028   100.0000     0.3069 

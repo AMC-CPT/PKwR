@@ -1,0 +1,8 @@
+   GRP
+ADM RT TR
+  1  5  5
+  2  4  4
+  3  3  3
+  4  2  2
+n.subj  n.rec 
+    28     54 

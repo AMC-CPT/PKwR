@@ -1,0 +1,4 @@
+arith.mean   geo.mean     median         SD    gCV.pct 
+    100.77      96.98      97.42      28.46      28.33 
+ true.arith    true.geo true.median true.CV.pct 
+     104.60      100.00      100.00       30.69 
