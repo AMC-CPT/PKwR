@@ -12,4 +12,4 @@ plot(xg, exp(xg), type = "l", lwd = 1.6, las = 1, bty = "l", ylim = c(0, 5),
 lines(xg, tay(xg, 1), lty = 2); lines(xg, tay(xg, 2), lty = 3)
 abline(v = 0, lty = 3, col = "gray60")
 legend("topleft", bty = "n", cex = 0.85, lty = c(1, 2, 3), lwd = c(1.6, 1, 1),
-       legend = c("exp(x)", "1차 전개", "2차 전개"))
+       legend = c("exp(x)", "일차 전개", "이차 전개"))

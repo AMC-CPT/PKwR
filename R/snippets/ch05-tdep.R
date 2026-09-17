@@ -15,7 +15,7 @@ y0 <- c(A = 0, Ag = 0, E = 1)
 r1 <- as.data.frame(lsoda(y0, tt, tdep, q1, events = ev))
 r0 <- as.data.frame(lsoda(y0, tt, tdep, q0, events = ev))
 
-dy <- c(1, 3, 7, 14, 21)                          # 각 날의 골농도와 효소량
+dy <- c(1, 3, 7, 14, 21)                          # 각 날의 최저농도와 효소량
 i  <- match(dy*24 - 0.5, tt)
 round(rbind(day = dy, Ctrough.induced = r1$A[i]/q1$Vd,
             Ctrough.control = r0$A[i]/q1$Vd, E = r1$E[i],

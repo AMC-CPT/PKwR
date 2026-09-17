@@ -12,7 +12,7 @@ D <- 250; CL <- 4.5; V1 <- 12; Q <- 18; V2 <- 48    # mg, L/hr, L
 th <- macro2(D, CL, V1, Q, V2)
 round(th, 4)
 
-C2iv <- function(t)                          # 2구획 정맥 일시주사 농도함수
+C2iv <- function(t)                          # 2구획 정맥 일시주입 농도함수
   th[["A"]]*exp(-th[["alpha"]]*t) + th[["B"]]*exp(-th[["beta"]]*t)
 
 # 속도상수와 분포용적의 비교: beta < k10, V1 < Vss < Vz

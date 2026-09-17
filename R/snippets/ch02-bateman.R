@@ -1,4 +1,4 @@
-# 경구 1구획(Bateman): 흡수와 소실이 겹쳐 두 지수의 차가 된다
+# 경구 1구획(Bateman): 흡수와 제거가 겹쳐 두 지수의 차가 된다
 ka <- 0.9; ke <- 0.25; Dose <- 100; V <- 30
 bat  <- function(t) Dose*ka/(V*(ka - ke))*(exp(-ke*t) - exp(-ka*t))
 tmax <- log(ka/ke)/(ka - ke)                  # dC/dt = 0 을 풀면 나온다

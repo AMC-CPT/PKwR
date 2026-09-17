@@ -5,7 +5,7 @@ opt  <- optim(c(4, 0.5), m2ll, method = "L-BFGS-B",
               lower = c(0, 0.01), upper = c(10, 5))
 round(c(mu.hat = opt$par[1], sd.hat = opt$par[2], m2LL = opt$value,
         mu.true = mu, sd.true = sg), 4)
-# 최대가능도 추정치는 표본평균·표본표준편차(n 으로 나눈 것)와 같다
+# 최대우도 추정치는 표본평균·표본표준편차(n 으로 나눈 것)와 같다
 round(c(mean.y = mean(y), sd.n = sqrt(mean((y - mean(y))^2))), 4)
 
 # 우도의 모양을 본다: 뾰족하면 정밀하고 완만하면 아니다

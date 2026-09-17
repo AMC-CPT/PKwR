@@ -1,6 +1,6 @@
 # flip-flop: ka < k 이면 겉보기 최종반감기가 흡수속도상수로 결정된다.
 t <- seq(0.05, 48, 0.05)
-k <- log(2)/4                          # 소실반감기 4 hr
+k <- log(2)/4                          # 제거반감기 4 hr
 Cnorm <- Cpo(t, D = 100, V = 10, k = k, ka = 1.2)     # ka > k  (정상)
 Cflip <- Cpo(t, D = 100, V = 10, k = k, ka = 0.0578)  # ka < k  (flip-flop)
 

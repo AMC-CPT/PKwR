@@ -1,4 +1,4 @@
-# 2구획 정맥 일시주사:  C(t) = A exp(-a t) + B exp(-b t)
+# 2구획 정맥 일시주입:  C(t) = A exp(-a t) + B exp(-b t)
 C2 <- function(t, A = 85, a = 1.0, B = 15, b = 0.13)
   A*exp(-a*t) + B*exp(-b*t)
 

@@ -1,5 +1,5 @@
 # 상관이 있는 다변량 정규난수: Cholesky 로 만든다. z ~ N(0,I) 이면 Lz ~ N(0, LL')
-Om <- matrix(c(0.09, 0.036, 0.036, 0.04), nrow = 2)   # 10장의 OMEGA 와 같은 꼴
+Om <- matrix(c(0.09, 0.036, 0.036, 0.04), nrow = 2)   # 11장의 OMEGA 와 같은 꼴
 L  <- t(chol(Om))
 set.seed(20260828)
 eta <- t(L %*% matrix(rnorm(2*20000), nrow = 2))

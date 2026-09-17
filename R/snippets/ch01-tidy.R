@@ -10,6 +10,6 @@ d2$WT <- cov1$WT[match(d2$ID, cov1$ID)]       # 왼쪽 표의 순서가 그대�
 stopifnot(nrow(d2) == 6, !anyNA(d2$WT))
 head(d2, 3)
 
-# 긴 꼴 -> 넓은 꼴 (13장 교차설계의 T/R 짝짓기가 이 모양이다)
+# 긴 꼴 -> 넓은 꼴 (14장 교차설계의 T/R 짝짓기가 이 모양이다)
 reshape(d2[, c("ID", "TIME", "DV")], idvar = "ID", timevar = "TIME",
         direction = "wide")

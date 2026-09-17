@@ -10,12 +10,13 @@
 
 | 폴더 | 내용 |
 |:--|:--|
-| `R/snippets/` | 스니펫 191개. 이름 하나에 파일 하나입니다. `chNN-이름.R` 의 `NN` 이 장 번호이며, 책의 등장 순서는 파일 이름 순서가 아니라 `R/build.R` 의 순서입니다 |
-| `output/` | 각 스니펫의 콘솔 출력 190개. `ch10-ctl` 은 NONMEM 제어파일 예문이라 실행하지 않습니다 |
-| `figures/` | 각 스니펫이 만든 그림 81개 |
+| `R/snippets/` | 스니펫 201개. 이름 하나에 파일 하나입니다. `chNN-이름.R` 의 `NN` 이 장 번호이며, 책의 등장 순서는 파일 이름 순서가 아니라 `R/build.R` 의 순서입니다 |
+| `output/` | 각 스니펫의 콘솔 출력 200개. `ch11-ctl` 은 NONMEM 제어파일 예문이라 실행하지 않습니다 |
+| `figures/` | 각 스니펫이 만든 그림 82개 |
 | `R/build.R` | 전부 다시 만드는 스크립트. 장별 세션 경계가 주석에 적혀 있습니다 |
 | `R/_freeze.R` | 스니펫 하나를 실행해 출력과 그림을 고정하는 도구 |
-| `TDM-Vanco/` | 12.7절의 vancomycin TDM Shiny 앱 (아래 참조) |
+| `ACRE/` | 1.7절이 안내하는 ACRE 편집기의 문법 강조 정의(`Syntax/`)와 그 README |
+| `TDM-Vanco/` | 13.7절의 vancomycin TDM Shiny 앱 (아래 참조) |
 
 ## 실행
 
@@ -24,25 +25,26 @@ Rscript R/build.R
 ```
 
 저장소 최상위에서 실행하면 `output/` 과 `figures/` 가 처음부터 다시 만들어집니다.
-전체 약 12-15분이 걸리며 대부분은 11장의 FOCE-I 추정과 RPT, bootstrap 입니다.
+전체 약 12-15분이 걸리며 대부분은 11장의 FOCE-I 추정과 12장의 RPT, bootstrap 입니다.
 스니펫 하나만 보고 싶으면 그 파일을 열어 그냥 실행하면 됩니다.
 
 필요한 패키지는 다음과 같습니다. 별표는 저자가 만든 것입니다.
 
 | 패키지 | 쓰는 장 | 하는 일 |
 |:--|:--|:--|
-| `NonCompart`* | 5, 8, 13 | 비구획 분석(NCA) |
-| `wnl`* | 4, 7, 15 | 비선형 회귀와 오차 모형 |
-| `nmw`* | 10, 11, 12 | NONMEM 추정 과정의 R 재현 |
-| `BE`* | 13 | 생물학적동등성 분석 |
-| `sasLM`* | 13 | SAS PROC GLM 형식의 선형모형 |
-| `LBI`* | 3 | 우도구간(likelihood interval) |
-| `deSolve` | 9, 16 | 미분방정식 수치해 |
-| `PowerTOST` | 13 | 동등성 시험의 검정력과 표본크기 |
-| `nlme` | 5 등 | 예제 자료와 혼합효과 모형 |
+| `NonCompart`* | 5, 9, 10 | 비구획 분석(NCA) |
+| `wnl`* | 4, 7, 8, 16, 17 | 비선형 회귀와 오차 모형 |
+| `nmw`* | 11, 13 | NONMEM 추정 과정의 R 재현 |
+| `BE`* | 14 | 생물학적동등성 분석 |
+| `sasLM`* | 14 | SAS PROC GLM 형식의 선형모형 |
+| `LBI`* | 3 | 가능도 구간(likelihood interval) |
+| `mathr`* | 2 | 수치 계산 도구(기계 엡실론, 구적법, 수치 미분) |
+| `deSolve` | 2, 5, 7, 8, 10, 13, 17 | 미분방정식 수치해 |
+| `PowerTOST` | 14 | 동등성 시험의 검정력과 표본크기 |
+| `nlme` | 5, 14 | 예제 자료와 혼합효과 모형 |
 
 ```r
-install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI",
+install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI", "mathr",
                    "deSolve", "PowerTOST", "nlme"))
 ```
 
@@ -53,8 +55,8 @@ install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI",
 않으려는 의도적 설계입니다.
 
 - 5장 → 6장: `Cpo`
-- 7장 → 8장: `dat2`, `C2iv`, `th`, `D`, `CL`, `tobs`
-- 10장 → 11장: `DATA`, `PRED`, `TH`, `OM`, `SG`, `EBE`, `r.fo`, `r.foce`, `cov.fo`
+- 7장 → 8장 → 9장: `dat2`, `C2iv`, `th`, `D`, `CL`, `tobs` (8장은 7장 세션 안에서 돕니다)
+- 11장 → 12장: `DATA`, `PRED`, `TH`, `OM`, `SG`, `EBE`, `r.fo`, `r.foce`, `cov.fo`
 
 이 사이에 세션을 새로 시작하면 뒤 장이 깨집니다. `R/build.R` 의 주석에 그 경계가 적혀
 있습니다.
@@ -68,7 +70,7 @@ install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI",
 
 ## TDM-Vanco: vancomycin TDM 웹앱
 
-`TDM-Vanco/` 는 책 12.7절이 설명하는 TDM 엔진을 실제로 돌려 보는 Shiny 앱입니다. 집단 모형의
+`TDM-Vanco/` 는 책 13.7절이 설명하는 TDM 엔진을 실제로 돌려 보는 Shiny 앱입니다. 집단 모형의
 출력(THETA, OMEGA, SIGMA)만 바꾸면 다른 약물로 갈아 끼울 수 있다는 것이 이 앱의 요점입니다.
 
 외부 의존은 **`shiny` 하나**입니다(`commonmark` 는 도움말 탭의 마크다운 렌더링에만 쓰이고,
@@ -131,7 +133,7 @@ source("TDM-Vanco/tests/regression.R")
 ## 책
 
 『약동학 with R - 이론과 계산을 R로 잇는다』, 배균섭 (울산대학교 의과대학 · 서울아산병원).
-3부 16장. 책은 별도로 출간됩니다.
+3부 17장. 책은 별도로 출간됩니다.
 
 연습문제 해답이 필요하거나 오류를 발견하면 **ksbae@acr.kr** 로 연락 주십시오.
 

@@ -3,7 +3,7 @@ Bmax <- 100; Kdb <- 15                            # 결합 자리(mg/L)와 해�
 CLintb <- 2                                       # 저추출 약물의 내적 청소율 L/hr
 Ctot <- function(Cf) Cf + Bmax*Cf/(Kdb + Cf)      # 총 = 유리 + 결합
 R0b   <- c(1, 2, 5, 10, 20, 40)                   # 지속정주 속도 (mg/hr)
-Cfree <- R0b/CLintb                               # 항정상태: 소실은 유리약물에 비례
+Cfree <- R0b/CLintb                               # 항정상태: 제거는 유리약물에 비례
 round(rbind(rate = R0b, C.free = Cfree, C.total = Ctot(Cfree),
             fu = Cfree/Ctot(Cfree),
             total.per.rate = Ctot(Cfree)/R0b,

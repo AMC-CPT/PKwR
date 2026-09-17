@@ -1,4 +1,4 @@
-# Gauss-Newton: 현재 추정치에서 모형을 1차로 펴고(선형화) 선형 최소제곱을 푼다
+# Gauss-Newton: 현재 추정치에서 모형을 일차로 펴고(선형화) 선형 최소제곱을 푼다
 fmod <- function(p) p[1]*exp(-p[2]*d4$x)
 Jac  <- function(p) cbind(exp(-p[2]*d4$x), -p[1]*d4$x*exp(-p[2]*d4$x))
 
