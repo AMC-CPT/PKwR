@@ -3,7 +3,7 @@ set.seed(20260828)
 tt <- c(0.5, 1, 2, 4, 6, 8, 12)
 obs <- round(decay(tt)*exp(rnorm(length(tt), 0, 0.12)), 2)
 
-par(mfrow = c(1, 3), mar = c(4.2, 4.2, 2.4, 0.8))
+par(mfrow = c(1, 3), mar = c(4.2, 4.2, 2.4, 0.8), cex = 0.85)   # cex: 세 판이면 기본값이 작아진다
 plot(tt, obs, las = 1, bty = "l", pch = 16, xlab = "t", ylab = "y",
      main = "(a) 점과 곡선")                  # las: 축 눈금 방향, bty: 상자 모양
 curve(decay(x), 0, 12, add = TRUE, lty = 2)   # add = TRUE 로 겹쳐 그린다

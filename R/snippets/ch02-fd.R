@@ -7,9 +7,10 @@ signif(c(best.h.fwd = hs[which.min(fwd)], sqrt.eps = sqrt(.Machine$double.eps),
          best.h.ctr = hs[which.min(ctr)], cube.root.eps = .Machine$double.eps^(1/3),
          min.err.fwd = min(fwd), min.err.ctr = min(ctr)), 3)
 
-par(mar = c(4.2, 5.4, 1.0, 1.0))
+par(mar = c(4.2, 6.4, 1.0, 1.0))
 plot(hs, fwd, log = "xy", type = "l", las = 1, bty = "l", ylim = c(1e-12, 1e-1),
-     xlab = "h", ylab = "절대오차")
+     xlab = "h", ylab = "")
+title(ylab = "절대오차", line = 5)            # 축 이름을 눈금 글자 바깥에 둔다
 lines(hs, ctr, lty = 2)
 abline(v = c(sqrt(.Machine$double.eps), .Machine$double.eps^(1/3)), lty = 3,
        col = "gray55")

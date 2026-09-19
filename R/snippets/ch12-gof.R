@@ -7,7 +7,7 @@ gofplot <- function(x, y, xlab, ylab) {
   for (id in unique(TAB$ID)) {
     i <- TAB$ID == id
     lines(x[i], y[i], col = "gray70")
-    text(x[i], y[i], id, cex = 0.6)
+    text(x[i], y[i], id, cex = 0.85)
   }
 }
 par(mfrow = c(1, 2), mar = c(4.2, 4.2, 2.4, 0.8))

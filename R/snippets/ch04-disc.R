@@ -6,7 +6,7 @@ s1 <- sum((log(y2) - log(b1[1]*exp(-b1[2]*x2)))^2); s2 <- b2$value
 nn <- length(y2); q1 <- 2; q2 <- 4
 
 # (1) F 검정: 늘어난 파라미터가 줄인 SSE 가 남은 잔차분산에 비해 큰가
-# (2) 우도비 검정: 같은 질문을 카이제곱으로 (대표본 근사)
+# (2) 가능도비 검정: 같은 질문을 카이제곱으로 (대표본 근사)
 Fs <- ((s1 - s2)/(q2 - q1))/(s2/(nn - q2)); LR <- nn*log(s1/s2)
 round(c(SSE.1exp = s1, SSE.2exp = s2, F = Fs, dOFV = LR, df = q2 - q1), 4)
 signif(c(p.F = pf(Fs, q2 - q1, nn - q2, lower.tail = FALSE),

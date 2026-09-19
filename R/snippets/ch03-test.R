@@ -13,7 +13,7 @@ polygon(c(xg[xg > cv], rev(xg[xg > cv])), c(dnorm(xg[xg > cv], 0, se),
 polygon(c(xg[xg < cv], rev(xg[xg < cv])), c(dnorm(xg[xg < cv], d, se),
         rep(0, sum(xg < cv))), density = 12, angle = 45, border = NA)  # 2종
 abline(v = cv, lty = 3)
-legend("topright", bty = "n", cex = 0.75, lty = c(1, 2),
+legend("topleft", bty = "n", cex = 0.75, lty = c(1, 2),
        legend = c("귀무(차이 0)", "대립(차이 0.8)"))
 
 ng <- 4:40                                    # 표본크기에 따른 검정력 곡선

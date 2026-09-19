@@ -12,7 +12,7 @@ res <- t(sapply(fits, function(o) c(par1 = o$par[1], par2 = o$par[2],
   SSE = o$value, corr = cov2cor(solve(o$hessian))[1, 2])))
 round(c(t0 = t0), 3); round(res, 4)
 
-# 프로파일(우도) 구간은 변환에 불변이지만 Wald 구간은 좌표를 탄다
+# 프로파일(가능도) 구간은 변환에 불변이지만 Wald 구간은 좌표를 탄다
 ci.k <- range((pe4[2] + se4[2]*dg)[abs(tK) <= tc])
 se.lk <- sqrt(diag(2*s2*solve(fits[["A, log k"]]$hessian)))[2]
 round(rbind(Wald.on.k     = pe4[2] + c(-1, 1)*tc*se4[2],

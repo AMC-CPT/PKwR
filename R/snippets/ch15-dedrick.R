@@ -7,17 +7,19 @@ kW  <- function(W) aCL*W^bCL/(cV*W)               # 제거속도상수
 Cd  <- function(t, W) 10*W/(cV*W)*exp(-kW(W)*t)   # 10 mg/kg 정맥 일시주입
 round(rbind(W = Wd, k = kW(Wd), t.half = log(2)/kW(Wd)), 4)
 
-par(mfrow = c(1, 2), mar = c(4.2, 5.2, 2.4, 0.8))
+par(mfrow = c(1, 2), mar = c(4.2, 6.4, 2.4, 0.8))
 tg <- seq(0.01, 40, 0.05); ii <- seq(1, length(tg), 40)
 matplot(tg, sapply(Wd, function(W) Cd(tg, W)), type = "l", log = "y", lty = 1:4,
         col = 1, las = 1, bty = "l", ylim = c(0.005, 3), xlab = "t (hr)",
-        ylab = "C (mg/L)", main = "(a) 원래 좌표")
+        ylab = "", main = "(a) 원래 좌표")
+title(ylab = "C (mg/L)", line = 5)      # 축 이름을 눈금 글자 바깥에 둔다
 legend("topright", bty = "n", cex = 0.75, lty = 1:4, legend = names(Wd))
 matplot(sapply(Wd, function(W) tg[ii]/W^(1 - bCL)),
         sapply(Wd, function(W) Cd(tg[ii], W)/10), type = "p", pch = 1:4,
         cex = 0.7, col = 1, log = "y", las = 1, bty = "l", xlim = c(0, 12),
         ylim = c(0.005, 0.3), xlab = expression(t/W^0.25),
-        ylab = "C/(D/W)", main = "(b) Dedrick 좌표")
+        ylab = "", main = "(b) Dedrick 좌표")
+title(ylab = "C/(D/W)", line = 5)
 legend("topright", bty = "n", cex = 0.75, pch = 1:4, legend = names(Wd))
 
 # 겹쳐진 곡선을 사람(70 kg)의 좌표로 되돌리면 사람의 예측이 된다

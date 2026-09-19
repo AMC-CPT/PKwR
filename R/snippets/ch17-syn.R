@@ -23,7 +23,7 @@ Esurf <- function(a, b, psi) {
 }
 ag <- seq(0, 8, length.out = 60); bg <- seq(0, 20, length.out = 60)
 contour(ag, bg, outer(ag, bg, Esurf, psi = 3), las = 1, bty = "l",
-        levels = c(20, 35, 50, 65, 80), labcex = 0.65,
+        levels = c(20, 35, 50, 65, 80), labcex = 0.8,
         xlab = "Drug A (mg/L)", ylab = "Drug B (mg/L)",
         main = "(b) response surface (synergy)")
 contour(ag, bg, outer(ag, bg, Esurf, psi = 0), levels = 50, lty = 2,

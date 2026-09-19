@@ -49,4 +49,4 @@ for (j in seq_len(4)) lines(tg, Fpop(res[1:3, j], 320, tg), lwd = 2,
                             lty = c(1, 2, 4, 1)[j], col = c(1, 2, 4, 3)[j])
 legend("bottomleft", bty = "n", cex = 0.85, lwd = 2, lty = c(1, 2, 4, 1),
        col = c(1, 2, 4, 3), legend = c("자르지 않은 자료", "M1 (버린다)",
-       "M5 (LLOQ/2)", "M3 (우도에 넣는다)"))
+       "M5 (LLOQ/2)", "M3 (가능도에 넣는다)"))
