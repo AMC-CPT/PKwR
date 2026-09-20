@@ -1,2 +1,2 @@
       SD.WRES      SD.CWRES  max.abs.WRES max.abs.CWRES 
-        1.044         0.986         3.808         3.157 
+        1.034         0.986         3.764         3.292 
