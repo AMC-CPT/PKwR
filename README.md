@@ -1,143 +1,178 @@
-# 약동학 with R - 코드 저장소
+# Pharmacokinetics with R — code repository
 
-교재 **『약동학 with R - 이론과 계산을 R로 잇는다』**(배균섭)의 R 코드입니다.
+*한국어 설명은 [README.ko.md](README.ko.md) 에 있습니다.*
 
-책에 인쇄된 코드가 곧 이 저장소의 파일이고, 책에 실린 콘솔 출력과 그림도 이 코드를 실행해
-얻은 것입니다. 그래서 **책의 코드와 실제로 돌아간 코드가 어긋날 수 없습니다.**
-값을 바꾸어 다시 돌려 보는 것이 이 책이 권하는 공부 방법입니다.
+The R code of the textbook **『약동학 with R — 이론과 계산을 R로 잇는다』**
+(*Pharmacokinetics with R: joining the theory to the computation*) by
+Kyun-Seop Bae.
 
-## 무엇이 들어 있나
+The code printed in the book **is** the file in this repository, and the console
+output and the figures printed in the book were produced by running it. So the
+code in the book cannot drift away from the code that actually ran. Changing a
+value and running it again is the way this book asks to be studied.
 
-| 폴더 | 내용 |
+**The book is written in Korean, and so are the comments in nearly all of the
+code files.** Everything else is not language-bound: the file names, the chapter
+numbering, the console output and the figures are the same in any language, and
+the `TDM-Vanco` web app below has an English interface. An English edition of
+the book is in preparation; when it is ready its translated code will be added
+here as `En/`, as it already has been for volume 4.
+
+## What is here
+
+| Folder | Contents |
 |:--|:--|
-| `R/snippets/` | 스니펫 201개. 이름 하나에 파일 하나입니다. `chNN-이름.R` 의 `NN` 이 장 번호이며, 책의 등장 순서는 파일 이름 순서가 아니라 `R/build.R` 의 순서입니다 |
-| `output/` | 각 스니펫의 콘솔 출력 200개. `ch11-ctl` 은 NONMEM 제어파일 예문이라 실행하지 않습니다 |
-| `figures/` | 각 스니펫이 만든 그림 82개 |
-| `R/build.R` | 전부 다시 만드는 스크립트. 장별 세션 경계가 주석에 적혀 있습니다 |
-| `R/_freeze.R` | 스니펫 하나를 실행해 출력과 그림을 고정하는 도구 |
-| `ACRE/` | 1.7절이 안내하는 ACRE 편집기의 문법 강조 정의(`Syntax/`)와 그 README |
-| `TDM-Vanco/` | 13.7절의 vancomycin TDM Shiny 앱 (아래 참조) |
+| `R/snippets/` | 201 snippets, one file per name. The `NN` of `chNN-name.R` is the chapter number. The order they appear in the book is the order in `R/build.R`, not alphabetical |
+| `output/` | the console output of each snippet, 200 files. `ch11-ctl` is a NONMEM control stream shown as an example and is not run |
+| `figures/` | the 82 figures the snippets make |
+| `R/build.R` | remakes all of it. The session boundaries between chapters are in its comments |
+| `R/_freeze.R` | the tool that runs one snippet and freezes its output and figure |
+| `ACRE/` | the syntax-highlighting definitions (`Syntax/`) of the ACRE editor that §1.7 introduces, and its README |
+| `TDM-Vanco/` | the vancomycin TDM Shiny app of §13.7 (below) |
 
-## 실행
+## Running it
 
 ```sh
 Rscript R/build.R
 ```
 
-저장소 최상위에서 실행하면 `output/` 과 `figures/` 가 처음부터 다시 만들어집니다.
-전체 약 12-15분이 걸리며 대부분은 11장의 FOCE-I 추정과 12장의 RPT, bootstrap 입니다.
-스니펫 하나만 보고 싶으면 그 파일을 열어 그냥 실행하면 됩니다.
+Run from the repository root, this remakes `output/` and `figures/` from
+scratch. It takes 12–15 minutes, most of it the FOCE-I estimation of Chapter 11
+and the randomization test and bootstrap of Chapter 12. To look at one snippet,
+open that file and just run it.
 
-필요한 패키지는 다음과 같습니다. 별표는 저자가 만든 것입니다.
+The packages needed are these. A star marks one the author wrote.
 
-| 패키지 | 쓰는 장 | 하는 일 |
+| Package | Chapters | What it does |
 |:--|:--|:--|
-| `NonCompart`* | 5, 9, 10 | 비구획 분석(NCA) |
-| `wnl`* | 4, 7, 8, 16, 17 | 비선형 회귀와 오차 모형 |
-| `nmw`* | 11, 13 | NONMEM 추정 과정의 R 재현 |
-| `BE`* | 14 | 생물학적동등성 분석 |
-| `sasLM`* | 14 | SAS PROC GLM 형식의 선형모형 |
-| `LBI`* | 3 | 가능도 구간(likelihood interval) |
-| `mathr`* | 2 | 수치 계산 도구(기계 엡실론, 구적법, 수치 미분) |
-| `deSolve` | 2, 5, 7, 8, 10, 13, 17 | 미분방정식 수치해 |
-| `PowerTOST` | 14 | 동등성 시험의 검정력과 표본크기 |
-| `nlme` | 5, 14 | 예제 자료와 혼합효과 모형 |
+| `NonCompart`* | 5, 9, 10 | non-compartmental analysis (NCA) |
+| `wnl`* | 4, 7, 8, 16, 17 | nonlinear regression and error models |
+| `nmw`* | 11, 13 | NONMEM's estimation steps, reproduced in R |
+| `BE`* | 14 | bioequivalence analysis |
+| `sasLM`* | 14 | linear models in the form of SAS PROC GLM |
+| `LBI`* | 3 | likelihood intervals |
+| `mathr`* | 2 | numerical tools (machine epsilon, quadrature, numerical differentiation) |
+| `deSolve` | 2, 5, 7, 8, 10, 13, 17 | numerical solution of differential equations |
+| `PowerTOST` | 14 | power and sample size for equivalence trials |
+| `nlme` | 5, 14 | example data and mixed-effects models |
 
 ```r
 install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI", "mathr",
                    "deSolve", "PowerTOST", "nlme"))
 ```
 
-## 알아 둘 것
+## Things to know
 
-**세션을 공유하는 장이 있습니다.** 스니펫은 대부분 장마다 독립된 R 세션에서 돌지만, 세 곳은
-앞 장의 객체를 그대로 이어받습니다. 같은 자료를 두 방법으로 보거나 같은 함수를 두 번 싣지
-않으려는 의도적 설계입니다.
+**Some chapters share a session.** Most snippets run in a fresh R session per
+chapter, but at three places a chapter inherits the objects of the one before
+it. That is deliberate: it lets the book look at the same data two ways, and
+saves printing the same function twice.
 
-- 5장 → 6장: `Cpo`
-- 7장 → 8장 → 9장: `dat2`, `C2iv`, `th`, `D`, `CL`, `tobs` (8장은 7장 세션 안에서 돕니다)
-- 11장 → 12장: `DATA`, `PRED`, `TH`, `OM`, `SG`, `EBE`, `r.fo`, `r.foce`, `cov.fo`
+- Ch 5 → Ch 6: `Cpo`
+- Ch 7 → Ch 8 → Ch 9: `dat2`, `C2iv`, `th`, `D`, `CL`, `tobs` (Chapter 8 runs inside Chapter 7's session)
+- Ch 11 → Ch 12: `DATA`, `PRED`, `TH`, `OM`, `SG`, `EBE`, `r.fo`, `r.foce`, `cov.fo`
 
-이 사이에 세션을 새로 시작하면 뒤 장이 깨집니다. `R/build.R` 의 주석에 그 경계가 적혀
-있습니다.
+Start a new session in between and the later chapter breaks. The boundaries are
+marked in the comments of `R/build.R`.
 
-**난수는 씨앗을 고정했습니다.** 시뮬레이션을 쓰는 스니펫은 각자 `set.seed()` 를 가지고 있어
-다시 돌려도 책과 같은 숫자가 나옵니다.
+**The random seeds are fixed.** Every snippet that simulates carries its own
+`set.seed()`, so a rerun gives the numbers printed in the book.
 
-**출력과 그림을 저장소에 넣은 이유.** 보통은 생성물을 기록하지 않고 그것을 만든 코드만
-기록합니다. 여기서는 R 을 설치하지 않고 코드만 읽는 사람도 결과를 볼 수 있도록 예외를
-두었습니다. 대신 그 파일들을 언제든 다시 만들 수 있는 코드가 같은 저장소에 있습니다.
+**Why the output and the figures are committed.** Normally one records the code
+and not what it produced. An exception is made here so that someone who has not
+installed R can still see the results while reading the code. The code that
+remakes those files is in the same repository, so nothing is taken on trust.
 
-## TDM-Vanco: vancomycin TDM 웹앱
+## TDM-Vanco: a vancomycin TDM web app
 
-`TDM-Vanco/` 는 책 13.7절이 설명하는 TDM 엔진을 실제로 돌려 보는 Shiny 앱입니다. 집단 모형의
-출력(THETA, OMEGA, SIGMA)만 바꾸면 다른 약물로 갈아 끼울 수 있다는 것이 이 앱의 요점입니다.
+`TDM-Vanco/` is a Shiny app that runs the TDM engine described in §13.7 of the
+book. Its point is that swapping the population model's output (THETA, OMEGA,
+SIGMA) is all it takes to move it to another drug.
 
-외부 의존은 **`shiny` 하나**입니다(`commonmark` 는 도움말 탭의 마크다운 렌더링에만 쓰이고,
-없으면 평문으로 보여 줍니다). 그 밖에는 base R 만 씁니다.
+Its only external dependency is **`shiny`** (`commonmark` is used to render the
+markdown of the help tab, and without it the help shows as plain text).
+Everything else is base R.
 
-![TDM-Vanco 화면](TDM-Vanco/screenshot.png)
+![TDM-Vanco screen](TDM-Vanco/screenshot.png)
 
-*합성 자료(`TDM-Vanco/tests/fixtures/synthetic_patient.csv`)를 넣은 화면입니다. 관측 농도 두 점으로
-개인 파라미터를 MAP 추정하고, 예측구간과 함께 다음 용량을 제시합니다.*
+*The screen with synthetic data (`TDM-Vanco/tests/fixtures/synthetic_patient.csv`)
+loaded. Two observed concentrations give a MAP estimate of the individual
+parameters, and the next dose is proposed with a prediction interval.*
 
-### 실행하는 세 가지 방법
+### Three ways to run it
 
-**1. 내려받지 않고 바로 (R 이 있는 경우)**
+**1. Without downloading anything (if you have R)**
 
 ```r
 shiny::runGitHub("PKwR", "AMC-CPT", subdir = "TDM-Vanco")
 ```
 
-한 줄이면 됩니다. GitHub 에서 받아 임시 폴더에 풀고 바로 띄웁니다.
+One line. It fetches from GitHub, unpacks into a temporary folder and starts.
 
-**2. 내려받아서**
+**2. From a clone**
 
 ```r
-shiny::runApp("TDM-Vanco")     # 저장소 최상위에서
+shiny::runApp("TDM-Vanco")     # from the repository root
 ```
 
-**3. 브라우저에서만 (R 없이)**
+**3. In a browser, with no R at all**
 
-<https://amc-cpt.github.io/PKwR/> 를 엽니다. 설치도 서버도 필요 없습니다.
+Open <https://amc-cpt.github.io/PKwR/>. No installation and no server.
 
-GitHub 자체는 R 을 돌리지 못하고 GitHub Pages 는 정적 파일만 줍니다. 그러나
-[shinylive](https://posit-dev.github.io/r-shinylive/) 로 앱을 WebAssembly 로 내보내면 R 런타임이
-브라우저 안에서 돌아가므로 정적 호스팅으로 충분합니다. 이 앱이 쓰는 `shiny` 와 `commonmark` 는
-둘 다 webR 저장소에 있어 그대로 동작합니다.
+GitHub cannot run R, and GitHub Pages serves static files only. But
+[shinylive](https://posit-dev.github.io/r-shinylive/) exports the app to
+WebAssembly, so the R runtime runs inside the browser and static hosting is
+enough. Both `shiny` and `commonmark`, which this app uses, are in the webR
+repository, so it works unchanged.
 
 ```r
 install.packages("shinylive")
-shinylive::export("TDM-Vanco", "docs")   # docs/ 에 정적 사이트 생성
+shinylive::export("TDM-Vanco", "docs")   # builds the static site into docs/
 ```
 
-내보낸 사이트는 66 MB 이고 대부분이 R 런타임입니다. 이것을 `main` 에 두면 위 1번의
-`runGitHub()` 가 내려받는 기본 브랜치 tarball 이 그만큼 커지므로, 이 저장소에서는 **`gh-pages`
-브랜치**에 따로 두었습니다(Pages 소스: `gh-pages` / `(root)`). 첫 접속에서 런타임을 내려받고
-그 뒤로는 브라우저에 캐시됩니다.
+The exported site is 66 MB, nearly all of it the R runtime. Putting that on
+`main` would add the same weight to the default-branch tarball that
+`runGitHub()` downloads in method 1, so it lives on a separate **`gh-pages`
+branch** here (Pages source: `gh-pages` / `(root)`). The runtime is fetched on
+the first visit and cached by the browser afterwards.
 
-두 가지가 다릅니다. 브라우저판은 R 이 사용자의 브라우저 안에서 도므로 **업로드한 환자 자료가
-어디로도 전송되지 않습니다.** 대신 첫 로딩이 느립니다.
+The two differ in one way that matters: in the browser version R runs inside
+your own browser, so **patient data you load is never transmitted anywhere.**
+The cost is a slow first load.
 
-서버가 필요하면 shinyapps.io 나 Posit Connect Cloud 에 이 저장소를 연결하는 방법도 있습니다.
+If a server is wanted instead, this repository can be connected to
+shinyapps.io or Posit Connect Cloud.
 
-### 검증
+### Verification
 
-`tests/regression.R` 은 `tests/fixtures/` 의 **합성 자료**로 회귀 검사를 돌려
-`golden_baseline.rds` 와 대조합니다. 실제 환자 자료는 이 저장소에 없습니다.
+`tests/regression.R` runs a regression check on the **synthetic** data in
+`tests/fixtures/` and compares it against `golden_baseline.rds`. No real patient
+data is in this repository.
 
 ```r
 source("TDM-Vanco/tests/regression.R")
 ```
 
-## 책
+## The book
 
-『약동학 with R - 이론과 계산을 R로 잇는다』, 배균섭 (울산대학교 의과대학 · 서울아산병원).
-3부 17장. 책은 별도로 출간됩니다.
+『약동학 with R — 이론과 계산을 R로 잇는다』, Kyun-Seop Bae (University of Ulsan
+College of Medicine · Asan Medical Center). Three parts, seventeen chapters.
+The book is published separately.
 
-연습문제 해답이 필요하거나 오류를 발견하면 **ksbae@acr.kr** 로 연락 주십시오.
+For the solutions to the exercises, or to report an error, write to
+**ksbae@acr.kr**.
 
-## 라이선스
+## Licence
 
-이 저장소의 **R 코드와 그 산출물**은 GPL-3 을 따릅니다([LICENSE](LICENSE)).
-책의 본문과 그림 설명 등 저작물 자체는 여기에 포함되지 않으며 별도의 권리가 적용됩니다.
+The **R code in this repository and what it produces** are under GPL-3
+([LICENSE](LICENSE)). The text of the book and its figure captions are not
+included here and are separately reserved.
+
+## The other books in the series
+
+| | |
+|---|---|
+| 1 Scientific Computation with R | <https://github.com/AMC-CPT/SciCompR> |
+| 2 Scientific Inference in Clinical Trials with R | <https://github.com/AMC-CPT/CTDA> |
+| 4 Pharmacometrics with NONMEM and R | <https://github.com/AMC-CPT/PMx> |
+| 5 Essentials of Clinical Drug Development (online appendix) | <https://github.com/AMC-CPT/CDD> |
