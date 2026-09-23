@@ -1,0 +1,20 @@
+# Line endings: LF in the index and in the working tree alike, so that a machine with
+# core.autocrlf true neither prints line-ending warnings on commit nor shows every file
+# as modified. The same rule as in the other public companions of the series.
+* text=auto eol=lf
+
+# Binary files: no line-ending conversion and no text diff. The first 8 KB of a small PDF
+# can be pure text, which text=auto may mistake for a text file, so nail them by extension.
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.zip   binary
+*.gz    binary
+*.RData binary
+*.rda   binary
+*.rds   binary
+*.xlsx  binary
+*.docx  binary
+*.pptx  binary
