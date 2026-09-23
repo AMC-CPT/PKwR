@@ -1,4 +1,4 @@
-# 부하용량: 항정상태를 기다리지 않고 첫 회에 올린다. 유지용량을 축적계수로 나눈다.
+# 부하용량: 항정상태를 기다리지 않고 첫 회에 올린다. 유지용량에 축적계수를 곱한다.
 V.map <- TH[[2]]*exp(fit5[2]); K.map <- TH[[3]]*exp(fit5[3])
 DL <- D.new/(1 - exp(-K.map*12))                    # 축적계수 기준
 round(c(V.map = V.map, t.half = log(2)/K.map, accum = 1/(1 - exp(-K.map*12)),

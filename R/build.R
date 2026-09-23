@@ -4,8 +4,8 @@
 #  Add one freeze(...) line per snippet as chapters are written.
 #  전체 실행 시간: 약 12-15분 (12장의 FOCE-I, RPT, bootstrap 이 대부분).
 # =====================================================================
-if (!file.exists("PKwR.tex"))
-  stop("Run from the repository root (where PKwR.tex lives).")
+if (!dir.exists("R/snippets"))
+  stop("Run from the repository root (where R/snippets/ lives).")
 
 dir.create("output",  showWarnings = FALSE)
 dir.create("figures", showWarnings = FALSE)

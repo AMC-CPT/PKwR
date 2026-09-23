@@ -34,7 +34,7 @@ round(c(nonadipose.min = min(Kp.pred[nonad]/Kp[nonad]),
         nonadipose.max = max(Kp.pred[nonad]/Kp[nonad]),
         adipose = Kp.pred[["AD"]]/Kp[["AD"]]), 2)
 
-# Vss 로 옮기면 그 오차가 그대로 드러난다 (식 9.5)
+# Vss 로 옮기면 그 오차가 그대로 드러난다 (식 10.7)
 vss <- function(kp) V[["ART"]] + V[["VEN"]] + sum(kp*V[names(kp)])
 round(c(Vss.pred = vss(Kp.pred), Vss.assumed = vss(Kp),
         ratio = vss(Kp.pred)/vss(Kp)), 2)

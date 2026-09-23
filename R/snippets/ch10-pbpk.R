@@ -1,5 +1,5 @@
 library(deSolve)
-# 상태: 조직 농도 12개 + 동맥/정맥 농도 + 장관강 약물량(AGL) + 제거 누적량(AEL)
+# 상태: 조직 농도 11개 + 동맥/정맥 농도 + 장관강 약물량(AGL) + 제거 누적량(AEL)
 dydt <- function(t, y, p) with(p, {
   Cout <- y[tis]/Kp[tis]                         # 각 조직의 유출측 혈장농도
   dtis <- Q[tis]*(y[["ART"]] - Cout)/V[tis]      # 관류제한 기본형
