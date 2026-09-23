@@ -135,9 +135,11 @@ new_session <- function() .session <<- new.env(parent = globalenv())
 freeze <- function(name, seed = 1L, fig = FALSE, fig.w = 5, fig.h = 3.2,
                    width = 76, digits = 7, env = .session,
                    trim = NULL, trim.keep = 2L, drop = NULL, squeeze = FALSE) {
-  snippet <- file.path("R", "snippets", paste0(name, ".R"))
-  outfile <- file.path("output", paste0(name, ".txt"))
-  figfile <- file.path("figures", paste0(name, ".pdf"))
+  #  경로는 옵션이다. 기본값은 한국어판의 것이고, 영어판(En/build.R)이 자기
+  #  폴더로 바꾸어 준다. 기본값에서는 동작이 전과 같다(2026-09-22, 4권과 같은 방식).
+  snippet <- file.path(getOption("pkwr.snipdir", "R/snippets"), paste0(name, ".R"))
+  outfile <- file.path(getOption("pkwr.outdir",  "output"),     paste0(name, ".txt"))
+  figfile <- file.path(getOption("pkwr.figdir",  "figures"),    paste0(name, ".pdf"))
   stopifnot(file.exists(snippet))
 
   old <- options(width = width, digits = digits)
@@ -149,8 +151,10 @@ freeze <- function(name, seed = 1L, fig = FALSE, fig.w = 5, fig.h = 3.2,
   # (cairo 는 이 글꼴을 CairoFont-* 이름으로 재내장하므로 pdffonts 출력에는
   #  KoPubWorld 라는 이름이 보이지 않는다 - 한글 렌더는 정상이다.)
   # cairo 가 없는 환경에서는 pdf() 로 떨어지며 한글이 깨질 수 있다.
+  #  글꼴도 옵션이다. 영어판(En/build.R)은 라틴 글꼴을 준다. 기본값은 한국어판 그대로다.
+  fam <- getOption("pkwr.figfont", "KoPubWorld돋움체 Medium")
   if (fig) {
-    if (capabilities("cairo")) grDevices::cairo_pdf(figfile, width = fig.w, height = fig.h, family = "KoPubWorld돋움체 Medium")
+    if (capabilities("cairo")) grDevices::cairo_pdf(figfile, width = fig.w, height = fig.h, family = fam)
     else grDevices::pdf(figfile, width = fig.w, height = fig.h)
     on.exit({ if (length(grDevices::dev.list())) grDevices::dev.off() }, add = TRUE)
   }
