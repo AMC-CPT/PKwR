@@ -2,7 +2,7 @@
 
 *An English description is in [README.md](README.md).*
 
-교재 **『약동학 with R - 이론과 계산을 R로 잇는다』**(배균섭)의 R 코드입니다.
+교재 **『약동학 with R』**(배균섭)의 R 코드입니다.
 
 책에 인쇄된 코드가 곧 이 저장소의 파일이고, 책에 실린 콘솔 출력과 그림도 이 코드를 실행해
 얻은 것입니다. 그래서 **책의 코드와 실제로 돌아간 코드가 어긋날 수 없습니다.**
@@ -17,16 +17,18 @@
 | `figures/` | 각 스니펫이 만든 그림 82개 |
 | `R/build.R` | 전부 다시 만드는 스크립트. 장별 세션 경계가 주석에 적혀 있습니다 |
 | `R/_freeze.R` | 스니펫 하나를 실행해 출력과 그림을 고정하는 도구 |
-| `ACRE/` | 1.7절이 안내하는 ACRE 편집기의 문법 강조 정의(`Syntax/`)와 그 README |
+| `En/` | 영문판의 같은 것: 번역한 스니펫, 그 출력과 그림, `En/build.R` (아래 참조) |
+| `ACRE/` | 1.11절이 안내하는 ACRE 편집기의 문법 강조 정의(`Syntax/`)와 그 README |
 | `TDM-Vanco/` | 13.7절의 vancomycin TDM Shiny 앱 (아래 참조) |
 
 ## 실행
 
 ```sh
-Rscript R/build.R
+Rscript R/build.R     # 한글판의 output/ 과 figures/
+Rscript En/build.R    # 영문판의 En/output/ 과 En/figures/
 ```
 
-저장소 최상위에서 실행하면 `output/` 과 `figures/` 가 처음부터 다시 만들어집니다.
+저장소 최상위에서 `R/build.R` 을 실행하면 `output/` 과 `figures/` 가 처음부터 다시 만들어집니다.
 전체 약 12-15분이 걸리며 대부분은 11장의 FOCE-I 추정과 12장의 RPT, bootstrap 입니다.
 스니펫 하나만 보고 싶으면 그 파일을 열어 그냥 실행하면 됩니다.
 
@@ -65,6 +67,20 @@ install.packages(c("NonCompart", "wnl", "nmw", "BE", "sasLM", "LBI", "mathr",
 
 **난수는 씨앗을 고정했습니다.** 시뮬레이션을 쓰는 스니펫은 각자 `set.seed()` 를 가지고 있어
 다시 돌려도 책과 같은 숫자가 나옵니다.
+
+### `En/`: 영문판
+
+```
+En/R/snippets/chNN-*.R   같은 코드. 주석, 그림 라벨, 인쇄 문자열만 영어
+En/build.R               이것을 실행해 En/output/ 과 En/figures/ 를 만든다
+En/output/               영문판의 동결 콘솔 출력
+En/figures/              영문판의 동결 그림(라틴 글꼴)
+```
+
+`En/build.R` 은 `R/build.R` 과 `R/_freeze.R` 을 그대로 불러 경로 셋과 그림 글꼴만 바꾸므로 두 판은
+같은 파이프라인(스니펫 순서, 세션 공유, 난수 시드)을 씁니다. 주석과 인쇄 문자열 밖의 코드는 한 토큰도
+다르지 않고, `En/output/` 의 숫자는 `output/` 과 모두 같습니다. 다른 것은 라벨뿐입니다.
+영문판 책은 준비 중입니다.
 
 **출력과 그림을 저장소에 넣은 이유.** 보통은 생성물을 기록하지 않고 그것을 만든 코드만
 기록합니다. 여기서는 R 을 설치하지 않고 코드만 읽는 사람도 결과를 볼 수 있도록 예외를
@@ -134,7 +150,7 @@ source("TDM-Vanco/tests/regression.R")
 
 ## 책
 
-『약동학 with R - 이론과 계산을 R로 잇는다』, 배균섭 (울산대학교 의과대학 · 서울아산병원).
+『약동학 with R』, 배균섭 (울산대학교 의과대학 · 서울아산병원).
 3부 17장. 책은 별도로 출간됩니다.
 
 연습문제 해답이 필요하거나 오류를 발견하면 **ksbae@acr.kr** 로 연락 주십시오.
@@ -146,7 +162,7 @@ source("TDM-Vanco/tests/regression.R")
 
 ## 같은 시리즈의 다른 companion 저장소
 
-- 1권 『과학 계산 with R』 — <https://github.com/AMC-CPT/SciCompR>
-- 2권 『임상시험에서의 과학적 추론 with R』 — <https://github.com/AMC-CPT/CTDA>
-- 4권 『계량약리학 with NONMEM and R』 — <https://github.com/AMC-CPT/PMx>
-- 5권 『신약임상개발』 — <https://github.com/AMC-CPT/CDD>
+- 1권 『과학 계산 with R』: <https://github.com/AMC-CPT/SciCompR>
+- 2권 『임상시험에서의 과학적 추론 with R』: <https://github.com/AMC-CPT/CTDA>
+- 4권 『계량약리학 with NONMEM and R』: <https://github.com/AMC-CPT/PMx>
+- 5권 『신약임상개발』: <https://github.com/AMC-CPT/CDD>

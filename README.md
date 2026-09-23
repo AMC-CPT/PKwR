@@ -1,9 +1,8 @@
-# Pharmacokinetics with R — code repository
+# Pharmacokinetics with R: code repository
 
 *한국어 설명은 [README.ko.md](README.ko.md) 에 있습니다.*
 
-The R code of the textbook **『약동학 with R — 이론과 계산을 R로 잇는다』**
-(*Pharmacokinetics with R: joining the theory to the computation*) by
+The R code of the textbook **『약동학 with R』** (*Pharmacokinetics with R*) by
 Kyun-Seop Bae.
 
 The code printed in the book **is** the file in this repository, and the console
@@ -15,8 +14,9 @@ value and running it again is the way this book asks to be studied.
 code files.** Everything else is not language-bound: the file names, the chapter
 numbering, the console output and the figures are the same in any language, and
 the `TDM-Vanco` web app below has an English interface. An English edition of
-the book is in preparation; when it is ready its translated code will be added
-here as `En/`, as it already has been for volume 4.
+the book is in preparation, and its code is already here: `En/` holds the same
+snippets with the comments, labels and messages in English, together with their
+own frozen output and figures (see [below](#en-the-english-edition)).
 
 ## What is here
 
@@ -27,16 +27,18 @@ here as `En/`, as it already has been for volume 4.
 | `figures/` | the 82 figures the snippets make |
 | `R/build.R` | remakes all of it. The session boundaries between chapters are in its comments |
 | `R/_freeze.R` | the tool that runs one snippet and freezes its output and figure |
-| `ACRE/` | the syntax-highlighting definitions (`Syntax/`) of the ACRE editor that §1.7 introduces, and its README |
+| `En/` | the same for the English edition: translated snippets, their output and figures, and `En/build.R` (below) |
+| `ACRE/` | the syntax-highlighting definitions (`Syntax/`) of the ACRE editor that §1.11 introduces, and its README |
 | `TDM-Vanco/` | the vancomycin TDM Shiny app of §13.7 (below) |
 
 ## Running it
 
 ```sh
-Rscript R/build.R
+Rscript R/build.R     # the Korean edition's output/ and figures/
+Rscript En/build.R    # the English edition's En/output/ and En/figures/
 ```
 
-Run from the repository root, this remakes `output/` and `figures/` from
+Run from the repository root, `R/build.R` remakes `output/` and `figures/` from
 scratch. It takes 12–15 minutes, most of it the FOCE-I estimation of Chapter 11
 and the randomization test and bootstrap of Chapter 12. To look at one snippet,
 open that file and just run it.
@@ -77,6 +79,22 @@ marked in the comments of `R/build.R`.
 
 **The random seeds are fixed.** Every snippet that simulates carries its own
 `set.seed()`, so a rerun gives the numbers printed in the book.
+
+### `En/`: the English edition
+
+```
+En/R/snippets/chNN-*.R   the same code with the comments, labels and messages in English
+En/build.R               runs them and makes En/output/ and En/figures/
+En/output/               the English edition's frozen console output
+En/figures/              the English edition's frozen figures (Latin face)
+```
+
+`En/build.R` sources `R/build.R` and `R/_freeze.R` and only redirects the three
+paths and the figure font, so the two editions share one pipeline: the same
+order of snippets, the same shared sessions and the same seeds. Outside the
+comments and the printed strings the code is identical, token for token, and
+every number in `En/output/` is identical to its counterpart in `output/`; what
+differs is the labels. The English build takes as long as the Korean one.
 
 **Why the output and the figures are committed.** Normally one records the code
 and not what it produced. An exception is made here so that someone who has not
@@ -134,7 +152,7 @@ The exported site is 66 MB, nearly all of it the R runtime. Putting that on
 `main` would add the same weight to the default-branch tarball that
 `runGitHub()` downloads in method 1, so it lives on a separate **`gh-pages`
 branch** here (Pages source: `gh-pages` / `(root)`). The runtime is fetched on
-the first visit and cached by the browser afterwards.
+the first visit and cached by the browser afterward.
 
 The two differ in one way that matters: in the browser version R runs inside
 your own browser, so **patient data you load is never transmitted anywhere.**
@@ -155,14 +173,14 @@ source("TDM-Vanco/tests/regression.R")
 
 ## The book
 
-『약동학 with R — 이론과 계산을 R로 잇는다』, Kyun-Seop Bae (University of Ulsan
+『약동학 with R』 (*Pharmacokinetics with R*), Kyun-Seop Bae (University of Ulsan
 College of Medicine · Asan Medical Center). Three parts, seventeen chapters.
 The book is published separately.
 
 For the solutions to the exercises, or to report an error, write to
 **ksbae@acr.kr**.
 
-## Licence
+## License
 
 The **R code in this repository and what it produces** are under GPL-3
 ([LICENSE](LICENSE)). The text of the book and its figure captions are not
