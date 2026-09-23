@@ -1,0 +1,13 @@
+[1] "CL" "V" 
+   exists     class 
+   "TRUE" "numeric" 
+function (x, digits = 0, ...) 
+NULL
+function (from = 1, to = 1, by = ((to - from)/(length.out - 1)), 
+    length.out = NULL, along.with = NULL, ...) 
+NULL
+   t    c   df 
+TRUE TRUE TRUE 
+TRUE.    T. 
+ TRUE FALSE 
+[1] "CL" "V" 

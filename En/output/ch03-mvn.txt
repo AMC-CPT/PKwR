@@ -1,0 +1,5 @@
+         var1   var2  corr
+target 0.0900 0.0400 0.600
+sample 0.0892 0.0402 0.599
+CV1.pct CV2.pct    corr 
+  30.69   20.20    0.60 

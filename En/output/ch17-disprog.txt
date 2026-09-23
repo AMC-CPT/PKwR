@@ -1,0 +1,4 @@
+            day 84 day 180
+natural      38.40   48.00
+symptomatic  32.40   48.00
+modifying    33.36   42.96

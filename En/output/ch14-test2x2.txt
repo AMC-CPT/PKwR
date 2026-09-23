@@ -1,0 +1,29 @@
+$`Analysis of Variance (log scale)`
+               Df Sum Sq Mean Sq F value  Pr(>F)    
+SUBJECT        23   5.24  0.2278    7.11 9.9e-06 ***
+GROUP           1   0.10  0.1002    0.43    0.52    
+SUBJECT(GROUP) 22   5.14  0.2336    7.29 8.7e-06 ***
+PERIOD          1   0.02  0.0207    0.65    0.43    
+DRUG            1   0.06  0.0631    1.97    0.17    
+ERROR          22   0.71  0.0321                    
+TOTAL          47   6.03                            
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+$`Between and Within Subject Variability`
+                                Between Subject Within Subject
+Variance Estimate                        0.1008        0.03206
+Coefficient of Variation, CV(%)         32.5622       18.04985
+
+$`Least Square Means (geometric mean)`
+                Reference Drug Test Drug
+Geometric Means           1958      1821
+
+$`90% Confidence Interval of Geometric Mean Ratio (T/R)`
+                 Lower Limit Point Estimate Upper Limit
+90% CI for Ratio       0.851           0.93       1.016
+
+$`Sample Size`
+                      True Ratio=1 True Ratio=Point Estimate
+80% Power Sample Size            7                        10
+

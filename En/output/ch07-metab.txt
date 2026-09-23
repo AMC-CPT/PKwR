@@ -1,0 +1,4 @@
+     kp slope.a    km.e slope.b 
+ 0.3500  0.3500  0.0875  0.0875 
+formula numeric 
+   0.15    0.15 

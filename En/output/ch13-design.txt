@@ -1,0 +1,2 @@
+     best.t.CL     SD.at.best      best.t.KA prior.SD.logCL 
+        16.500          0.124          0.250          0.253 

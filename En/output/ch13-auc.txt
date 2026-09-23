@@ -1,0 +1,8 @@
+      [,1]  [,2]
+TIME  2.00 11.50
+DV   11.69  5.99
+              CL AUC24    LL    UL
+two.points  4.49 252.9 213.7 299.2
+trough.only 4.08 278.4 227.4 340.9
+prior.only  2.83 401.3 244.5 658.7
+truth       4.91 231.6    NA    NA

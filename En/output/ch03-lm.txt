@@ -1,0 +1,7 @@
+Intercept      TIME  lambda.z half.life 
+   3.3083   -0.1823    0.1823    3.8013 
+        Intercept    TIME Intercept    TIME
+by.hand     3.308 -0.1823    0.0142 0.00097
+lm          3.308 -0.1823    0.0142 0.00097
+R2.by.hand      R2.lm 
+    0.9999     0.9999 

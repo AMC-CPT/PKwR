@@ -1,0 +1,4 @@
+ Clast.obs Clast.pred 
+    0.1300     0.1285 
+AUCIFO AUCIFP    CLO    CLP    VZO    VZP 
+56.350 56.328  4.437  4.438 63.481 63.505 

@@ -1,0 +1,13 @@
+     int seq prd trt car
+[1,]   1   1  -1  -1   0
+[2,]   1   1   1   1  -1
+[3,]   1  -1  -1   1   0
+[4,]   1  -1   1  -1   1
+   rank columns 
+      4       5 
+ SEQ  TRT 
+-0.5 -0.5 
+       true.F   estimated.F          bias minus.half.dC 
+         0.00         -0.06         -0.06         -0.06 
+   rank columns 
+      5       5 

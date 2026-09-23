@@ -1,0 +1,4 @@
+    A, k A, log k f(t0), k 
+   6.688    6.688    1.000 
+kappa.XtX     sigma 
+    6.335     0.098 

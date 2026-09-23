@@ -1,0 +1,4 @@
+    SE   crit  power 
+0.3536 0.6930 0.6190 
+n.for.80pct 
+         25 

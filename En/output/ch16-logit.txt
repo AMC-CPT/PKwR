@@ -1,0 +1,2 @@
+        b0         b1  gamma.hat   EC50.hat gamma.true  EC50.true 
+    -3.782      1.846      1.846      7.756      1.600      8.000 

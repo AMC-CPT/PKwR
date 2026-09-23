@@ -1,0 +1,2 @@
+Cp.max1 Cp.max2  E.max1  E.max2 
+    6.0     6.1   101.6    90.0 

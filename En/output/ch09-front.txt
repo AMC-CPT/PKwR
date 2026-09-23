@@ -1,0 +1,2 @@
+         C0 AUC.backext pct.backext 
+     22.278       1.673       2.969 

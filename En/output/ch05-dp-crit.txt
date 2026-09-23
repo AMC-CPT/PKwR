@@ -1,0 +1,4 @@
+  dose.ratio   crit.lower   crit.upper     b1.lower     b1.upper 
+      9.0000       0.8984       1.1016       0.9839       1.0083 
+proportional 
+      1.0000 

@@ -1,0 +1,4 @@
+    V.map    t.half     accum   D.maint    D.load DL.by.CtV 
+     40.5       5.9       1.3     568.3     753.4     404.9 
+Cav.1st.noload   Cav.1st.load         Cav.ss 
+          7.13           9.46           9.63 

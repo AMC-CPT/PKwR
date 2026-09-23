@@ -1,0 +1,13 @@
+[1] 28
+attr(,"Power")
+[1] 0.8074
+  Sample size Achieved power
+1          28         0.8074
+       GMR 0.95 GMR 0.9
+CV 15%       12      22
+CV 20%       20      38
+CV 25%       28      56
+CV 30%       40      80
+CV 35%       52     106
+ AUC.alone Cmax.alone      joint 
+    0.9349     0.7501     0.6926 

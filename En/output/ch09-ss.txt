@@ -1,0 +1,10 @@
+ AUCtau Cmax.ss Cmin.ss     Cav PTF.pct   swing 
+ 55.781  23.454   2.620   4.648 448.180   7.950 
+    AUCtau.ss AUCinf.single     D.over.CL 
+        55.78         55.56         55.56 
+ Rac.AUC Rac.Cmax Rac.Cmin  onecomp 
+   1.649    1.126    1.859    1.762 
+  CMAX   TMAX   CLST AUCLST LAMZHL    CLO    VZO   VSSO 
+23.454  0.000  2.620 55.781 10.706  4.482 69.225 20.267 
+ AUC[0-2h] AUC[2-12h]     AUCLST 
+     18.87      36.91      55.78 

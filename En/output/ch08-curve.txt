@@ -1,0 +1,2 @@
+one.comp.rule 
+            0 

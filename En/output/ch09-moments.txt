@@ -1,0 +1,4 @@
+        C0    AUC.inf pct.extrap   AUMC.inf        MRT    inv.MRT 
+   22.2776    56.3498     3.3010   732.8892    13.0061     0.0769 
+    CL    Vss     Vz 
+ 4.437 57.702 63.481 

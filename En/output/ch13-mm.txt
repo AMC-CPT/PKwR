@@ -1,0 +1,2 @@
+       Km      Vmax   dose.MM dose.prop 
+      5.2     494.1     367.3     562.5 

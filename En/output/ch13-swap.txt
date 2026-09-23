@@ -1,0 +1,4 @@
+             CL tau dose  AUC24  Cmin  Cmax
+vancomycin 3.56  12  730 409.65 11.45 29.98
+gentamicin 4.86  24  310  63.79  0.28 20.09
+amikacin   4.50  24 1140 253.33  1.59 59.89

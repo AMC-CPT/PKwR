@@ -1,0 +1,2 @@
+      A.alone       B.alone half.additive  half.synergy  half.antagon 
+        50.00         50.00         50.00         63.64         45.95 

@@ -1,0 +1,8 @@
+        exact     trapezoid       simpson log.trapezoid 
+        397.3         405.5         397.4         397.3 
+   trap simpson 
+  8.240   0.134 
+[1] 0
+            [,1]  [,2]
+ratio.trap  3.99  4.00
+ratio.simp 15.65 15.91

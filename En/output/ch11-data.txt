@@ -1,0 +1,6 @@
+  ID TIME   DV  BWT DOSE
+1  1 0.00 0.74 79.6  320
+2  1 0.25 2.84 79.6  320
+3  1 0.57 6.57 79.6  320
+  n.subj    n.rec dose.min dose.max 
+      12      132      320      320 

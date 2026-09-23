@@ -1,0 +1,2 @@
+max.abs.diff         Cmax  Ctrough.12h   AUC24.pred 
+   8.101e-05    3.141e+01    5.665e+00    5.612e+02 

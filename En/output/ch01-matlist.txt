@@ -1,0 +1,18 @@
+     CL    V
+CL 0.09 0.03
+V  0.03 0.04
+  nrow    det 
+2.0000 0.0027 
+       CL      V
+CL  14.81 -11.11
+V  -11.11  33.33
+    CL   V
+CL 1.0 0.5
+V  0.5 1.0
+   [,1]
+CL 0.12
+V  0.07
+ one.bracket two.brackets 
+      "list"    "numeric" 
+[1] 0.25
+[1] "par" "n"   "cov"

@@ -1,0 +1,4 @@
+    PE     LL     UL 
+0.9082 0.8142 1.0129 
+df.resid  n.total       BE 
+      17       20        1 

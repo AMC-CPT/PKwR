@@ -1,0 +1,12 @@
+[1] FALSE FALSE
+      gap 
+5.551e-17 
+[1] TRUE
+     mine         R     at100 
+2.220e-16 2.220e-16 1.421e-14 
+    exp709     exp710   exp.m745   exp.m746 
+8.218e+307        Inf 4.941e-324  0.000e+00 
+  left  right 
+   Inf 1e+300 
+difference  rel.error 
+ 1.000e-07  2.876e-11 

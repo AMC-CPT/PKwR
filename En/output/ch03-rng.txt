@@ -1,0 +1,4 @@
+     mean        SD SD.theory  lag1.cor 
+   0.5030    0.2896    0.2887    0.0164 
+mean.inverse    mean.true         ks.p 
+       3.990        4.000        0.676 
